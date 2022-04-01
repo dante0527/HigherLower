@@ -4,7 +4,7 @@ import random
 username = input("\nEnter your name:\n")
 
 # Print welcome message using user's name
-print(f"Welcome to the higher/lower game, {username}!")
+print(f"\nWelcome to the higher/lower game, {username}!")
 
 # Accept upper and lower bounds as inputs
 lower = int(input("Enter the lower bound: "))
@@ -14,7 +14,7 @@ upper = int(input("Enter the upper bound: "))
 secret_num = random.randint(lower, upper)
 
 # Prompt user to guess number within bounds
-print(f"Great, now guess a number between {lower} and {upper}")
+print(f"\nGreat, now guess a number between {lower} and {upper}")
 
 # Accept first guess
 guess = int(input())
