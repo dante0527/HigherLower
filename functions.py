@@ -1,3 +1,19 @@
+import os
+
+def main_menu():
+    print("Welcome to Higher / Lower! Please choose an option:\n")
+    version = 0
+    while version not in (1, 2):
+        version = int(input("One Player (enter 1)\nTwo Player (enter 2)\n"))
+        if version == 1:
+            os.system("python3 one_player.py")
+        elif version == 2:
+            running = True
+            os.system("python3 two_player.py")
+        else:
+            print("Invalid version.\n")
+
+
 def validate_num(num, case, *args):
     num_validated = False
     word = ''
