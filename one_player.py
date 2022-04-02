@@ -19,7 +19,7 @@ tries = 0
 
 # Initiate while loop
 while guess != secret_num:
-    if (guess > num_range):
+    if guess > num_range:
         print("Guess outside of range.\n"
               f"Guess a number between 0 and {num_range}.")
         guess = validate_num(input(), "guess", "your")
