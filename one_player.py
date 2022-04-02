@@ -11,7 +11,7 @@ num_range = validate_num(input("Enter the number range:\n"), "range")
 secret_num = random.randint(1, num_range)
 
 # Prompt player to guess number within bounds
-print(f"\nGreat, now guess a number between 0 and {num_range}")
+print(f"\nGreat, now guess a number between 1 and {num_range}")
 
 # Accept first guess
 guess = validate_num(input(), "guess", "your ")
