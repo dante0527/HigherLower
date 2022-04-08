@@ -4,7 +4,7 @@ def main_menu():
     print("Welcome to Higher / Lower! Please choose an option:\n")
     version = 0
     while version not in (1, 2):
-        version = int(input("One Player (enter 1)\nTwo Player (enter 2)\n"))
+        version = int(validate_num(input("One Player (enter 1)\nTwo Player (enter 2)\n"), 'version'))
         if version == 1:
             os.system("python3 one_player.py")
         elif version == 2:
