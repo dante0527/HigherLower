@@ -26,8 +26,10 @@ def main_menu():
 
 
 def validate_num(num, type, *args):
+    # Optional player name for 2p mode
     player = args
 
+    # Validate number is positve and an integer
     while True:
         try:
             assert(int(num) > 0)
