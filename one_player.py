@@ -22,6 +22,7 @@ def one_player():
 
     # Initiate while loop
     while guess != secret_num:
+        
         # Guess outside of range
         if guess > num_range:
             clear()
