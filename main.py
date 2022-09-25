@@ -1,64 +1,87 @@
 import os
-import title_art
-from one_player import *
-from two_player import *
-
-def main_menu():
-    print("Welcome to Higher / Lower! Please choose an option:\n")
-    version = 0
-    while version not in (1, 2):
-        version = int(validate_num(input("One Player (enter 1)\nTwo Player (enter 2)\n"), 'version'))
-        clear()
-        if version == 1:
-            one_player()
-        elif version == 2:
-            two_player()
-        else:
-            print("Invalid version.\n")
-
-
-def validate_num(num, type):
-    num_validated = False
-    while True:
-        try:
-            assert(int(num) > 0)
-            return int(num)
-            break
-        except ValueError:
-            clear()
-            print(f"\n{type.title()} must be a number.")
-            num = input(f"Enter {type}:\n")
-            pass
-        except AssertionError:
-            clear()
-            print(f"\n{type.title()} must be > 0.\n")
-            num = input(f"Enter {type}:\n")
-            pass
-
-
-# Guess function
-def guess_num(player, range, secret_num):
-    clear()
-    guess = validate_num(input(f"{player}'s turn\n"), "guess")
-    while 0 > guess > range:
-        print(f"\nGuess must be between 1 and {range}.\n")
-    if guess < secret_num:
-        clear()
-        print("Nope, too low.\n")
-    elif guess > secret_num:
-        clear()
-        print("Nope, too high.\n")
-
 
 # Clear screen
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+def main_menu():
+    global version
+    from one_player import one_player
+    from two_player import two_player
+
+    print("Welcome to Higher / Lower! Please choose an option:\n")
+    
+    while version not in (1, 2):
+        version = input("One Player (enter 1)\nTwo Player (enter 2)\n")
+        clear()
+        if version == '1':
+            one_player()
+            break
+        elif version == '2':
+            two_player()
+            break
+        else:
+            print("Invalid version.\n")
+
+
+def validate_num(num, type, *args):
+    player = args
+
+    while True:
+        try:
+            assert(int(num) > 0)
+            return int(num)
+        
+        # NaN
+        except ValueError:
+            clear()
+            print(f"{type.title()} must be a number.")
+
+            if player:
+                print(f"{player[0]}'s turn")
+
+            num = input(f"Enter {type}:\n")
+            pass
+        
+        # Negative number
+        except AssertionError:
+            clear()
+            print(f"{type.title()} must be > 0")
+
+            if player:
+                print(f"{player[0]}'s turn")
+
+            num = input(f"Enter {type}:\n")
+            pass
+
+
+# Two player guess function
+def guess_num(player, range, secret_num):
+    guess = validate_num(input(f"{player}'s turn\nEnter guess:\n"), "guess", player)
+
+    # Guess outside of range
+    while guess > range:
+        clear()
+        print(f"Guess must be between 1 and {range}\n{player}'s turn\nEnter guess:")
+        guess = validate_num(input(), "guess", player)
+
+    # Guess too low
+    if guess < secret_num:
+        clear()
+        print("Nope, too low.")
+    
+    # Guess too high
+    elif guess > secret_num:
+        clear()
+        print("Nope, too high.")
+
+    # Correct guess
+    else:
+        return 1
+
+
 if __name__ == "__main__":
-
-    # Title art
-    print(title_art.higher_lower)
-
-    # Run Program
+    version = 0
+    clear()
     main_menu()
