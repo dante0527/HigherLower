@@ -1,5 +1,5 @@
-import random
 from main import *
+import random
 
 def two_player():
 
@@ -12,6 +12,7 @@ def two_player():
 
     # Accept num_range as input
     num_range = validate_num(input("Enter the number range:\n"), "range")
+    clear()
     print(f"\nGuess a number between 1 and {num_range}")
 
     # Create random number between 0 and num_range
