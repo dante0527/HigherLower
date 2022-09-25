@@ -1,5 +1,30 @@
-from main import validate_num, guess_num, clear
+from main import validate_num, clear
 import random
+
+# Two player guess function
+def guess_num(player, range, secret_num):
+    guess = validate_num(input(f"{player}'s turn\nEnter guess:\n"), "guess", player)
+
+    # Guess outside of range
+    while guess > range:
+        clear()
+        print(f"Guess must be between 1 and {range}\n{player}'s turn\nEnter guess:")
+        guess = validate_num(input(), "guess", player)
+
+    # Guess too low
+    if guess < secret_num:
+        clear()
+        print("Nope, too low.")
+    
+    # Guess too high
+    elif guess > secret_num:
+        clear()
+        print("Nope, too high.")
+
+    # Correct guess
+    else:
+        return 1
+
 
 def two_player():
     # Accept users name's as input

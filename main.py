@@ -56,31 +56,6 @@ def validate_num(num, type, *args):
             pass
 
 
-# Two player guess function
-def guess_num(player, range, secret_num):
-    guess = validate_num(input(f"{player}'s turn\nEnter guess:\n"), "guess", player)
-
-    # Guess outside of range
-    while guess > range:
-        clear()
-        print(f"Guess must be between 1 and {range}\n{player}'s turn\nEnter guess:")
-        guess = validate_num(input(), "guess", player)
-
-    # Guess too low
-    if guess < secret_num:
-        clear()
-        print("Nope, too low.")
-    
-    # Guess too high
-    elif guess > secret_num:
-        clear()
-        print("Nope, too high.")
-
-    # Correct guess
-    else:
-        return 1
-
-
 if __name__ == "__main__":
     version = 0
     clear()
