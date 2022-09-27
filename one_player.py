@@ -4,7 +4,7 @@ import random
 def one_player():
 
     # Print welcome message
-    print(f"Welcome to the higher/lower game!")
+    print("Welcome to the higher/lower game!")
 
     # Accept number range as input
     num_range = validate_num(input("Enter the number range:\n"), "range")
