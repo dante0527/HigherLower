@@ -8,8 +8,7 @@ def guess_num(player, range, secret_num):
     # Guess outside of range
     while guess > range:
         clear()
-        print(f"Guess must be between 1 and {range}\n{player}'s turn\nEnter guess:")
-        guess = validate_num(input(), "guess", player)
+        guess = validate_num(input(f"Guess must be between 1 and {range}\n{player}'s turn\nEnter guess:\n"), "guess", player)
 
     # Guess too low
     if guess < secret_num:
@@ -41,7 +40,7 @@ def two_player():
     clear()
     print(f"Guess a number between 1 and {num_range}")
 
-    # Create random number between 0 and num_range
+    # Create random number between 1 and num_range
     secret_num = random.randint(1, num_range)
 
     # Track tries and winner

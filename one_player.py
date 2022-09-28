@@ -13,11 +13,8 @@ def one_player():
     # Create random number between 1 and num_range
     secret_num = random.randint(1, num_range)
 
-    # Prompt player to guess number within bounds
-    print(f"Great, now guess a number between 1 and {num_range}:")
-
     # Accept first guess
-    guess = validate_num(input(), "guess")
+    guess = validate_num(input(f"Great, now guess a number between 1 and {num_range}:\n"), "guess")
     tries = 0
 
     # Initiate while loop
@@ -26,9 +23,8 @@ def one_player():
         # Guess outside of range
         if guess > num_range:
             clear()
-            print("Guess outside of range.\n"
-                f"Guess a number between 1 and {num_range}:")
-            guess = validate_num(input(), "guess")
+            guess = validate_num(input("Guess outside of range.\n"
+                f"Guess a number between 1 and {num_range}:"), "guess")
 
         # Guess too low
         elif guess < secret_num:
