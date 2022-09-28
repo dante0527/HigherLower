@@ -12,7 +12,7 @@ def main_menu():
 
     print("Welcome to Higher / Lower! Please choose an option:\n")
     
-    while version not in (1, 2):
+    while True:
         version = input("One Player (enter 1)\nTwo Player (enter 2)\n")
         clear()
         if version == '1':
