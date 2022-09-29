@@ -5,6 +5,7 @@ def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
 
 
+# Menu screen
 def main_menu():
     global version
     from one_player import one_player
@@ -15,6 +16,7 @@ def main_menu():
     while True:
         version = input("One Player (enter 1)\nTwo Player (enter 2)\n")
         clear()
+
         if version == '1':
             one_player()
             break
@@ -25,12 +27,15 @@ def main_menu():
             print("Invalid version.\n")
 
 
+# Validate input
 def validate_num(num, type, *args):
-    # Optional player name for 2p mode
+
+    # Player's name (2P only)
     player = args
 
-    # Validate number is positve and an integer
+    # Input must be a positive integer
     while True:
+
         try:
             assert(int(num) > 0)
             return int(num)
@@ -38,22 +43,30 @@ def validate_num(num, type, *args):
         # NaN
         except ValueError:
             clear()
+
+            # Error message
             print(f"{type.title()} must be a number.")
 
+            # Turn message (2P only)
             if player:
                 print(f"{player[0]}'s turn")
 
+            # Get new input
             num = input(f"Enter {type}:\n")
             pass
         
         # Negative number
         except AssertionError:
             clear()
+
+            # Error message
             print(f"{type.title()} must be > 0")
 
+            # Turn message (2P only)
             if player:
                 print(f"{player[0]}'s turn")
 
+            # Get new input
             num = input(f"Enter {type}:\n")
             pass
 
