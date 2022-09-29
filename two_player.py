@@ -8,8 +8,8 @@ def guess_num(player, range, secret_num):
     # Guess outside of range
     while guess > range:
         clear()
-        guess = validate_num(input(f"Guess must be between 1 and {range}\n\
-            {player}'s turn\nEnter guess:\n"), "guess", player)
+        guess = validate_num(input(f"Guess must be between 1 and {range}\
+            \n{player}'s turn\nEnter guess:\n"), "guess", player)
 
     # Guess too low
     if guess < secret_num:

@@ -22,7 +22,7 @@ def one_player():
         if guess > num_range:
             clear()
             guess = validate_num(input("Guess outside of range.\n"
-                f"Guess a number between 1 and {num_range}:"), "guess")
+                f"Guess a number between 1 and {num_range}:\n"), "guess")
 
         # Guess too low
         elif guess < secret_num:
