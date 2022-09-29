@@ -30,15 +30,13 @@ def one_player():
         elif guess < secret_num:
             tries += 1
             clear()
-            print("Nope, too low.\nEnter your guess:")
-            guess = validate_num(input(), "guess")
+            guess = validate_num(input("Nope, too low.\nEnter your guess:\n"), "guess")
 
         # Guess too high
         elif guess > secret_num:
             tries += 1
             clear()
-            print("Nope, too high.\nEnter your guess:")
-            guess = validate_num(input(), "guess")
+            guess = validate_num(input("Nope, too high.\nEnter your guess:\n"), "guess")
 
     # Announce victory once while loop is exited
     tries += 1
